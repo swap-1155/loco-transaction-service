@@ -80,12 +80,10 @@ func beegoRegisterDB(cf mysqlConnectionConfig) error {
 	return err
 }
 
-// func with 'c' of type 'mysqlConnectionConfig' can be called as method
 func (c *mysqlConnectionConfig) ParseDSN(s string) error {
 	var err error
 	//invoking PARSEDSN method wiht string argument init
 	c.cf, err = mysql.ParseDSN(s)
-	//return *config struct
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -93,17 +91,20 @@ func (c *mysqlConnectionConfig) ParseDSN(s string) error {
 	return nil
 
 }
+
 func MySqlTest(alias string) error {
 	o := orm.NewOrm()
 	o.Using(alias)
 	_, err := o.Raw("SELECT 1").Exec()
 	return err
 }
+
 func (c *mysqlConnectionConfig) String() string {
 	t := c.cf.Clone()
 	t.Passwd = "root"
 	return t.FormatDSN()
 }
+
 func (c *mysqlConnectionConfig) FormatDSN() string {
 	return c.cf.FormatDSN()
 }

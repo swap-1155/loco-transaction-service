@@ -7,16 +7,17 @@ import (
 )
 
 /*
-CREATE TABLE transactions (
-    id INT NOT NULL AUTO_INCREMENT,
-    transactionId INT NOT NULL,
-    `type` ENUM('', 'shopping', 'travel', 'food', 'groceries') DEFAULT '',
-    amount FLOAT,
-    parentId INT DEFAULT NULL,
-    createdOn DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updatedOn DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
-)
+	CREATE TABLE `transactions` (
+	`id` int NOT NULL AUTO_INCREMENT,
+	`transactionId` int NOT NULL,
+	`transactionType` enum('','shopping','travel','food','groceries') DEFAULT '',
+	`amount` float DEFAULT NULL,
+	`parentId` int DEFAULT NULL,
+	`createdOn` datetime DEFAULT CURRENT_TIMESTAMP,
+	`updatedOn` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY (`transactionId`)
+	)
 */
 
 type Transactions struct {
